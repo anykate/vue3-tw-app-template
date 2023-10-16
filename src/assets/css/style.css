@@ -4,6 +4,6 @@
 
 @layer base {
     .wrapper {
-        @apply flex flex-col min-h-screen justify-center;
+        @apply flex min-h-screen flex-col justify-center;
     }
 }
