@@ -8,4 +8,4 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 ## Format with Prettier command
 
-npx pretter . --write
+npx prettier . --write
