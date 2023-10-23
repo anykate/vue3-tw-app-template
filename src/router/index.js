@@ -24,12 +24,20 @@ const routes = [
         ],
     },
     {
-        path: '/login',
-        name: 'login',
-        component: () => import('@/views/LoginView.vue'),
+        path: '/',
+        name: 'guest',
+        redirect: '/login',
+        component: () => import('@/layouts/GuestLayout.vue'),
         meta: {
             requiresAuth: false,
         },
+        children: [
+            {
+                path: '/login',
+                name: 'login',
+                component: () => import('@/views/LoginView.vue'),
+            },
+        ],
     },
     {
         path: '/:pathMatch(.*)',
@@ -54,9 +62,13 @@ router.beforeEach((to, from, next) => {
     const store = useUserStore()
 
     if (to.meta.requiresAuth && !store.getToken) {
-        next({ name: 'login' })
+        next({ name: 'login', replace: true })
     } else if (!to.meta.requiresAuth && store.getToken) {
-        next({ name: 'home' })
+        if (to.name !== 'login') {
+            next()
+        } else {
+            next({ name: 'home', replace: true })
+        }
     } else {
         next()
     }
