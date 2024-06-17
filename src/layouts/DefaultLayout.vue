@@ -1,20 +1,23 @@
+<script setup>
+import LeftSideBar from '@/components/LeftSideBar.vue'
+import RightSideBar from '@/components/RightSideBar.vue'
+</script>
+
 <template>
     <div class="wrapper container">
         <header class="flex items-center justify-end gap-2 bg-red-400">
             <router-link :to="{ name: 'home' }">Home</router-link>
             <router-link :to="{ name: 'about' }">About</router-link>
         </header>
-        <main class="flex grow flex-col md:flex-row">
-            <aside class="flex-none bg-slate-300 md:w-1/6">L. Sidebar</aside>
-            <div class="flex grow flex-col-reverse md:flex-row">
-                <div class="grow bg-slate-400">
+        <main class="flex flex-1 flex-col md:flex-row">
+            <LeftSideBar />
+            <div class="flex flex-1 flex-col max-md:order-2 md:flex-row">
+                <div class="flex-1 bg-slate-400">
                     <h1>Page Content</h1>
                     <router-view />
                 </div>
-                <aside class="flex-none bg-slate-700 md:w-1/6">
-                    R. Sidebar
-                </aside>
             </div>
+            <RightSideBar />
         </main>
         <footer class="bg-green-400">Social links</footer>
     </div>
