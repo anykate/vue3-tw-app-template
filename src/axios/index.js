@@ -17,10 +17,10 @@ axiosClient.interceptors.response.use(
     },
     (error) => {
         if (error.response.status === 401) {
-            const store = useUserStore()
-            store.setToken('')
-            const router = useRouter()
-            router.push({ name: 'login' })
+            // const store = useUserStore()
+            // store.setToken('')
+            // const router = useRouter()
+            // router.push({ name: 'login' })
         }
         throw error
     }
