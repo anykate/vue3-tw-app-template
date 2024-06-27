@@ -38,7 +38,7 @@
                     ></path>
                 </svg>
                 <span>
-                    <router-link :to="{ name: 'home' }">
+                    <router-link :to="{ name: 'Home' }">
                         <i class="bi bi-arrow-left-circle-fill ms-3"></i>
                         Go back home
                     </router-link>
