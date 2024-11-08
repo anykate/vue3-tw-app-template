@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-    .wrapper {
-        @apply flex min-h-screen flex-col justify-center;
-    }
+	.wrapper {
+		@apply flex min-h-screen flex-col justify-center;
+	}
 }
