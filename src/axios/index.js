@@ -2,6 +2,9 @@ import { useUserStore } from '@/stores/user'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 
+const store = useUserStore()
+const router = useRouter()
+
 const axiosClient = axios.create({
 	baseURL: `${import.meta.env.VITE_API_BASE_URL}/api/`,
 })
@@ -12,15 +15,11 @@ axiosClient.interceptors.request.use((config) => {
 })
 
 axiosClient.interceptors.response.use(
-	(response) => {
-		return response
-	},
+	(response) => response,
 	(error) => {
 		if (error.response.status === 401) {
-			// const store = useUserStore()
-			// store.setToken('')
-			// const router = useRouter()
-			// router.push({ name: 'login' })
+			store.setToken('')
+			router.push({ name: 'login' })
 		}
 		throw error
 	}
