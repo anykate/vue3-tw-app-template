@@ -2,30 +2,21 @@ import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', {
 	state: () => ({
-		user: {
-			token: '', // Dummy value here means login successful -> navigate to Home
-			data: {},
-		},
+		token: 's', // Dummy value here means login successful -> navigate to Home
 	}),
 
 	persist: {
 		storage: sessionStorage,
-		pick: ['user.token'],
+		pick: ['token'],
 	},
 
 	getters: {
-		getToken: (state) => state.user.token,
+		getToken: (state) => state.token,
 	},
 
 	actions: {
 		setToken(token) {
-			this.user.token = token
-
-			// if (token) {
-			//     sessionStorage.setItem('TOKEN', token)
-			// } else {
-			//     sessionStorage.removeItem('TOKEN')
-			// }
+			this.token = token
 		},
 	},
 })
