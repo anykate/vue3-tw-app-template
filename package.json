@@ -1,17 +1,17 @@
 {
 	"name": "vue-template-app",
-	"private": true,
 	"version": "0.0.0",
+	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
 		"build": "vite build",
-		"preview": "vite preview",
+		"dev": "vite",
+		"format": "npm run lint && npm run prettier",
+		"format-windows": "npm run lint-windows && npm run prettier",
 		"lint": "eslint --fix 'src/**/*.{js,ts,jsx,tsx,vue}'",
 		"lint-windows": "eslint --fix \"src/**/*.{js,ts,jsx,tsx,vue}\"",
 		"prettier": "npx prettier . --write",
-		"format": "npm run lint && npm run prettier",
-		"format-windows": "npm run lint-windows && npm run prettier"
+		"preview": "vite preview"
 	},
 	"dependencies": {
 		"@tailwindcss/vite": "^4.1.5",
