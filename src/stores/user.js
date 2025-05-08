@@ -8,6 +8,11 @@ export const useUserStore = defineStore('user', {
 		},
 	}),
 
+	persist: {
+		storage: sessionStorage,
+		pick: ['user.token'],
+	},
+
 	getters: {
 		getToken: (state) => state.user.token,
 	},
