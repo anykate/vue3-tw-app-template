@@ -17,10 +17,26 @@ const router = useRouter()
 
 const user = ref({})
 
-const checkAuth = async () => {
+const getSingleUser = async (val) => {
 	await axiosClient({
 		method: 'get',
-		url: `https://dummyjson.com/user/me`,
+		url: `https://dummyjson.com/user/${val}`,
+	})
+		.then((response) => response.data)
+		.then((data) => {
+			if (data) {
+				user.value = data
+			}
+		})
+		.catch((error) => {
+			// console.error('Error checking auth:', error.response.data)
+		})
+}
+
+const invalidateToken = async () => {
+	await axiosClient({
+		method: 'get',
+		url: 'https://dummyjson.com/user/me',
 	})
 		.then((response) => response.data)
 		.then((data) => {
@@ -36,8 +52,11 @@ const checkAuth = async () => {
 watch(
 	() => getCount.value,
 	(newValue) => {
-		if (newValue > 0) {
-			checkAuth()
+		if (newValue > 5) {
+			// After 5 requests, we will invalidate the token
+			invalidateToken()
+		} else {
+			getSingleUser(newValue)
 		}
 	}
 )
