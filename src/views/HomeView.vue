@@ -1,11 +1,11 @@
 <script setup>
 import { useCounterStore } from '@/stores/counter'
-// import { storeToRefs } from 'pinia'
+import { storeToRefs } from 'pinia'
 
 const store = useCounterStore()
 
 const { increment, decrement } = store // Actions dont need to be retrieved from storeToRefs
-// const { doubleCount,count } = storeToRefs(store) // This is how you can use storeToRefs to get state, getters w/o losing reactivity
+const { getCount } = storeToRefs(store) // This is how you can use storeToRefs to get state, getters w/o losing reactivity
 </script>
 
 <template>
@@ -16,7 +16,7 @@ const { increment, decrement } = store // Actions dont need to be retrieved from
 			@click="increment"
 		></i>
 
-		{{ store.count }}
+		{{ getCount }}
 
 		<i
 			class="ri-indeterminate-circle-fill ml-3 cursor-pointer"

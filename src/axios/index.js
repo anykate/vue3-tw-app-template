@@ -14,7 +14,7 @@ const axiosClient = axios.create({
 })
 
 axiosClient.interceptors.request.use((config) => {
-	config.headers.Authorization = `Bearer ${getToken}`
+	config.headers.Authorization = `Bearer ${getToken.value}`
 	return config
 })
 

@@ -2,11 +2,11 @@ import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', {
 	state: () => ({
-		token: 's', // Dummy value here means login successful -> navigate to Home
+		token: '', // Dummy value here means login successful -> navigate to Home
 	}),
 
 	persist: {
-		storage: sessionStorage,
+		storage: localStorage,
 		pick: ['token'],
 	},
 
