@@ -23,9 +23,7 @@ axiosClient.interceptors.response.use(
 	(error) => {
 		if (error.response.status === 401) {
 			setToken('')
-			router.push({ name: 'login' })
 		}
-		throw error
 	}
 )
 
